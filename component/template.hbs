@@ -56,8 +56,11 @@
   <div class="row">
     <div class="col span-6 mb-0">
       <label class="form-control-static"> Amount of Worker Nodes</label>
-      {{input-integer min=1 max=10 value=cluster.%%DRIVERNAME%%EngineConfig.workernodes classNames="form-control"}}
-
+      {{input-integer 
+        min=1 
+        value=cluster.%%DRIVERNAME%%EngineConfig.workernodes 
+        classNames="form-control"
+      }}
       <p class="help-block">
         Note: Can be modified during Karbon cluster editing
       </p>
@@ -203,37 +206,35 @@
   <div class="row">
     <div class="col span-4 mb-0">
       <label class="form-control-static">Master CPU</label>
-      {{input type="text"
-            class="form-control"
+      {{input-integer 
+            min=1
+            classNames="form-control"
             value=cluster.%%DRIVERNAME%%EngineConfig.mastercpu
             readonly=(not-eq mode "new")
           }}
-
       <p class="help-block">
       </p>
     </div>
     <div class="col span-4 mb-0">
       <label class="form-control-static">Master Memory</label>
-
-      {{input type="text"
-            class="form-control"
+      {{input-integer 
+            min=1
+            classNames="form-control"
             value=cluster.%%DRIVERNAME%%EngineConfig.mastermemorymib
             readonly=(not-eq mode "new")
           }}
-
       <p class="help-block">
         in MB
       </p>
     </div>
     <div class="col span-4 mb-0">
       <label class="form-control-static">Master Storage</label>
-
-      {{input type="text"
-            class="form-control"
+      {{input-integer 
+            min=1
+            classNames="form-control"
             value=cluster.%%DRIVERNAME%%EngineConfig.masterdiskmib
             readonly=(not-eq mode "new")
           }}
-
       <p class="help-block">
         in MB
       </p>
@@ -242,38 +243,35 @@
   <div class="row">
     <div class="col span-4 mb-0">
       <label class="form-control-static">ETCD CPU</label>
-
-      {{input type="text"
-            class="form-control"
+      {{input-integer 
+            min=1
+            classNames="form-control"
             value=cluster.%%DRIVERNAME%%EngineConfig.etcdcpu
             readonly=(not-eq mode "new")
           }}
-
       <p class="help-block">
       </p>
     </div>
     <div class="col span-4 mb-0">
       <label class="form-control-static">ETCD Memory</label>
-
-      {{input type="text"
-            class="form-control"
+      {{input-integer 
+            min=1
+            classNames="form-control"
             value=cluster.%%DRIVERNAME%%EngineConfig.etcdmemorymib
             readonly=(not-eq mode "new")
           }}
-
       <p class="help-block">
         in MB
       </p>
     </div>
     <div class="col span-4 mb-0">
       <label class="form-control-static">ETCD Storage</label>
-
-      {{input type="text"
-            class="form-control"
+      {{input-integer 
+            min=1
+            classNames="form-control"
             value=cluster.%%DRIVERNAME%%EngineConfig.etcddiskmib
             readonly=(not-eq mode "new")
           }}
-
       <p class="help-block">
         in MB
       </p>
@@ -282,34 +280,32 @@
   <div class="row">
     <div class="col span-4 mb-0">
       <label class="form-control-static">Worker CPU</label>
-
-      {{input type="text"
-            class="form-control"
+      {{input-integer 
+            min=1
+            classNames="form-control"
             value=cluster.%%DRIVERNAME%%EngineConfig.workercpu
             readonly=(not-eq mode "new")
           }}
-
       <p class="help-block">
       </p>
     </div>
     <div class="col span-4 mb-0">
       <label class="form-control-static">Worker Memory</label>
-
-      {{input type="text"
-            class="form-control"
+      {{input-integer 
+            min=1
+            classNames="form-control"
             value=cluster.%%DRIVERNAME%%EngineConfig.workermemorymib
             readonly=(not-eq mode "new")
           }}
-
       <p class="help-block">
         in MB
       </p>
     </div>
     <div class="col span-4 mb-0">
       <label class="form-control-static">Worker Storage</label>
-
-      {{input type="text"
-            class="form-control"
+      {{input-integer 
+            min=1
+            classNames="form-control"
             value=cluster.%%DRIVERNAME%%EngineConfig.workerdiskmib
             readonly=(not-eq mode "new")
           }}
