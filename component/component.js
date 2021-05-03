@@ -28,12 +28,50 @@ const filesystemMap = {
   'ext4': 'ext4',
   'xfs': 'xfs',
 }
-const versionChoicesMap = {
-  '1.16.8-0': '1.16.8-0',
-  '1.15.10-0': '1.15.10-0',
-  '1.14.10-0': '1.14.10-0',
-  '1.13.12-0': '1.13.12-0',
+
+const karbonVersionAndChoicesMap = {
+
+  '2.2.2': {
+    '1.19.8-0': '1.19.8-0',
+    '1.18.17-0': '1.18.17-0',
+    '1.17.13-0': '1.17.13-0',
+    '1.16.15-0': '1.16.15-0',
+    '1.15.12-1': '1.15.12-1',
+    '1.14.10-2': '1.14.10-2',
+    '1.13.12-2': '1.13.12-2',
+  },'2.2.1': {
+    '1.18.15-1': '1.18.15-1',
+    '1.17.13-0': '1.17.13-0',
+    '1.16.15-0': '1.16.15-0',
+    '1.15.12-1': '1.15.12-1',
+    '1.14.10-2': '1.14.10-2',
+    '1.13.12-2': '1.13.12-2',
+  },
+  '2.1': {
+    '1.16.10-0': '1.16.10-0',
+    '1.15.12-0': '1.15.12-0',
+    '1.14.10-1': '1.14.10-1',
+    '1.13.12-1': '1.13.12-1',
+  },
+  '2.0': {
+    '1.16.8-0': '1.16.8-0',
+    '1.15.10-0': '1.15.10-0',
+    '1.14.10-0': '1.14.10-0',
+    '1.13.12-0': '1.13.12-0',
+  },
 }
+
+// const karbonVersionMap = {
+//   '2.1': '2.1',
+//   '2.0': '2.0',
+// }
+
+// const versionChoicesMap = {
+//   '1.16.8-0': '1.16.8-0',
+//   '1.15.10-0': '1.15.10-0',
+//   '1.14.10-0': '1.14.10-0',
+//   '1.13.12-0': '1.13.12-0',
+// }
 
 /*!!!!!!!!!!!DO NOT CHANGE START!!!!!!!!!!!*/
 export default Ember.Component.extend(ClusterDriver, {
@@ -67,8 +105,9 @@ export default Ember.Component.extend(ClusterDriver, {
         password: "",
         insecure: false,
         workernodes: 1,
-        image: "",
-        version: "1.16.8-0",
+        image: "ntnx-1.0",
+        version: "1.18.17-0",
+        karbonversion: "2.2.2",
         cluster: "",
         vmnetwork: "",
         workercpu: 8,
@@ -137,9 +176,28 @@ export default Ember.Component.extend(ClusterDriver, {
     label: e[1],
     value: e[0]
   })),
-  versionChoices: Object.entries(versionChoicesMap).map((e) => ({
-    label: e[1],
+  // versionChoices: Object.entries(versionChoicesMap).map((e) => ({
+  //   label: e[1],
+  //   value: e[0]
+  // })),
+  versionChoices: computed('cluster.%%DRIVERNAME%%EngineConfig.karbonversion', function () {
+    let karbonVersion = get(this, 'cluster.%%DRIVERNAME%%EngineConfig.karbonversion');
+    console.log("karbonVersion: " + karbonVersion)
+    console.log("karbonVersionAndChoicesMap[karbonVersion]: " + karbonVersionAndChoicesMap[karbonVersion])
+    return Object.entries(karbonVersionAndChoicesMap[karbonVersion]).map((e) => ({
+      label: e[0],
+      value: e[0]
+    }))
+  }),
+
+  // karbonVersionChoices: Object.entries(karbonVersionMap).map((e) => ({
+  //   label: e[1],
+  //   value: e[0]
+  // })),
+  karbonVersionChoices: Object.entries(karbonVersionAndChoicesMap).map((e) => ({
+    label: e[0],
     value: e[0]
   })),
 
 });
+
