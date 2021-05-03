@@ -31,7 +31,15 @@ const filesystemMap = {
 
 const karbonVersionAndChoicesMap = {
 
-  '2.2.1': {
+  '2.2.2': {
+    '1.19.8-0': '1.19.8-0',
+    '1.18.17-0': '1.18.17-0',
+    '1.17.13-0': '1.17.13-0',
+    '1.16.15-0': '1.16.15-0',
+    '1.15.12-1': '1.15.12-1',
+    '1.14.10-2': '1.14.10-2',
+    '1.13.12-2': '1.13.12-2',
+  },'2.2.1': {
     '1.18.15-1': '1.18.15-1',
     '1.17.13-0': '1.17.13-0',
     '1.16.15-0': '1.16.15-0',
@@ -97,9 +105,9 @@ export default Ember.Component.extend(ClusterDriver, {
         password: "",
         insecure: false,
         workernodes: 1,
-        image: "",
-        version: "1.16.8-0",
-        karbonversion: "2.0",
+        image: "ntnx-1.0",
+        version: "1.18.17-0",
+        karbonversion: "2.2.2",
         cluster: "",
         vmnetwork: "",
         workercpu: 8,
